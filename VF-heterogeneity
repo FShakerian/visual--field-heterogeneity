@@ -43,7 +43,7 @@ clear perf tim n_trial
 %%%%% noise is chair report%%%%%%%%%%%%%
 
 
-%% fig 2.a fovea and lower and upper
+## fig 2.a fovea and lower and upper
 clear var_L var_C
 vs = 1:5;
 var_F = squeeze(perft(:,1,vs,:)); 
@@ -54,7 +54,7 @@ locL = [6 7 8];
 colC = [0 0.355 0.7410];
 colL = [0.8500 0.3250 0.0980];
 
-%% figure 2B barplot fovea-upper-lower
+## figure 2B barplot fovea-upper-lower
 vs = 5;
 n_var1 = sum(~isnan(perft(:,1,5,1)));
 n_var2 = sum(~isnan(perfp(:,1,1,1)));
@@ -136,7 +136,7 @@ opt_lines.Color     = colL;
 
 polygonplot_v3(x_boudL1,opt_axes,opt_lines,opt_area);
 
-%% statistic figure 2-c
+## statistic figure 2-c
 for ll = 1:8
     
     p_L = squeeze(perfp(:,ll,2:5,1));
@@ -159,7 +159,7 @@ end
 %pp = h.*8; % bonfrroni corrected
 [hh, crit_p, adj_ci_cvrg, adj_p]=fdr_bh(p,0.05,'pdep','no');
 
-%% figure 3/6/7-a,b/scatter plot
+## figure 3/6/7-a,b/scatter plot
 clear fig fig1 h
 
 loc_field = [6 7 8;2 3 4;4 5 6;8 1 2];
@@ -218,7 +218,8 @@ title({['visual signal ' num2str(vis_sig1(vs,1)) '-' num2str(vis_sig1(vs,2)) '%'
 %  title({['vs = ' num2str(vs) '/ r(4leg) = ' num2str(r1) '- pval= ' num2str(round(pval1*100)/100)];...
 %      ['r(chair) = ' num2str(r2) '- pval= ' num2str(round(pval2*100)/100)]});
 legend(fig,{'Body','Chair'})
-%% figure 3-a,b/distribution
+
+## figure 3-a,b/distribution
 %xlab = {'L-U Perf.','L-U Perf.','Le-R Perf.'};
 xlab = {'L-U RT.','L-U RT.','Le-R RT.'};
 
@@ -260,7 +261,7 @@ line([nanmean(xhistC) nanmean(xhistC)],[7 8], 'Color', colC);
 title({['visual signal ' num2str(vis_sig1(vs,1)) '-' num2str(vis_sig1(vs,2)) '%'];...
 ['p(A) = ' num2str(p_ks,'%.4f')]});
 
-%% figure 3-a, b/ cumulative figure
+## figure 3-a, b/ cumulative figure
 figure
 [f1,h1]=ecdf(xhistL);
 plot(h1,f1,'Color', colL,'LineWidth',2)
@@ -316,7 +317,7 @@ end
 x_v = squeeze(x_data_m(:,:,vs,2));
 [nanmean(x_v,1); nanstd(x_v,[],1)./sqrt(16)]
 
-%% figure 4-a/ polar plot 2 category in different range of visual signal
+## figure 4-a/ polar plot 2 category in different range of visual signal
 close all
 for vs= 1
     figure;
@@ -347,7 +348,7 @@ end
 
 %anova1(1-perfp(:,:,vs,1))
 
-%% figure 4-b / animacy bias in different visual signal
+## figure 4-b / animacy bias in different visual signal
 
 x_diff = ((perfp(:,:,:,1)-perfp(:,:,:,2))./(perfp(:,:,:,1)+perfp(:,:,:,2))); % ABI with recall
 
@@ -376,7 +377,7 @@ for vs = 2:5
     set(gca,'fontsize',16);
     title(['visual signal ' num2str(vis_sig1(vs,1)) '-' num2str(vis_sig1(vs,2)) '%']);
 end
-%% statistical test figure 4-b
+## statistical test figure 4-b
 
 x_anova = [];
 for vs = 5
@@ -389,7 +390,7 @@ for vs = 5
     %     c = multcompare(stats,'Estimate','row');
 end
 
-%% figure 5 colormap  of ABI
+## figure 5 colormap  of ABI
 
 i=0;
 for vs = 5:-1:2
@@ -411,7 +412,9 @@ c = colorbar; c.Label.String = 'ABI';
 xlabel('Location(degree)');
 ylabel('Visual signal(%)');
 set(gca,'fontsize',16,'YTick',1:4,'YTickLabel',ytic_map,'XTick',1:8,'XTickLabel',xtic_map);
-%% figure 5-b
+
+
+## figure 5-b
 
 figure;
 xval   = squeeze(nanmean(nanmean(x_diff(:,:,2:5),3),1));
@@ -428,7 +431,8 @@ xlabel('Location');
 
 %%xlim([0 5])
 ylabel('ABI');
-%% figure 5-c
+
+## figure 5-c
 
 for vs = 2:5
     xtic_nam{vs-1} = [num2str(vis_sig1(vs,1)) '-' num2str(vis_sig1(vs,2))];
@@ -449,7 +453,7 @@ xlabel('Visual signal(%)');
 ylabel('ABI');
 ylim([-0.2 0.2])
 
-%% anova figure 5
+## anova figure 5
 
 x_anova = [];
 for ll = 1:8
@@ -463,14 +467,7 @@ c = multcompare(stats,'Estimate','column');
 set(gca,'fontsize',14,'fontweight','bold','YTick',1:8,'YTickLabel',xtic_loc);
 ylabel('Location');
 
-%%
-clear d_table
-vs = 5;
-data_tabel = [squeeze(nanmean(x_data(:,:,vs,1),1))',squeeze(nanstd(x_data(:,:,vs,1),[],1)./sqrt(16))',...
-    squeeze(nanmean(x_data(:,:,vs,2),1))',squeeze(nanstd(x_data(:,:,vs,2),[],1)./sqrt(16))',...
-    squeeze(nanmean(x_diff(:,:,vs),1))',squeeze(nanstd(x_diff(:,:,vs),[],1)./sqrt(16))'];
-d_table = array2table(data_tabel,'VariableNames',{'mean-4leg','sem-4leg','mean-chair','sem-chiar','mean-ABI','sem-ABI'});
-%% anova category visual field
+## anova category visual field
 
 vs = 4;
 

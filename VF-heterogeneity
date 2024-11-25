@@ -1,4 +1,4 @@
-
+# read data
 %loc = 0; xdata = data_train1;
 loc = (0:7).*45; xdata = data_ses1;
 

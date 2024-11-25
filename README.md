@@ -22,4 +22,4 @@ Contributions are welcome! If you would like to improve this repository, please 
 
 ## Contact
 
-For questions, feedback, or collaboration opportunities, please contact [yfarideh.shakerian@gmail.com].
+For questions, feedback, or collaboration opportunities, please contact [farideh.shakerian@gmail.com].
